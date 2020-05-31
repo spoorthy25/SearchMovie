@@ -277,8 +277,6 @@ extension MovieDetailsViewController{
        scrollViewContainer.addArrangedSubview(movieNameLabel)
        scrollViewContainer.addArrangedSubview(movieYearLabel)
        scrollViewContainer.addArrangedSubview(stackview)
-       //scrollViewContainer.addArrangedSubview(movieRunningLabel)
-       //scrollViewContainer.addArrangedSubview(movieratingLabel)
        scrollViewContainer.addArrangedSubview(movieSynopisiLabel)
         scrollViewContainer.addArrangedSubview(movieDirectorLabel)
         scrollViewContainer.addArrangedSubview(movieWriterLabel)
