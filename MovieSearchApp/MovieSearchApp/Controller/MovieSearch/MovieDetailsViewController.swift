@@ -192,6 +192,14 @@ class MovieDetailsViewController: UIViewController {
          label.lineBreakMode = NSLineBreakMode.byWordWrapping
          return label
     }()
+    
+    let stackview: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.spacing = 10
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
 }
 
 
@@ -211,7 +219,7 @@ extension MovieDetailsViewController{
        }
        
        if let albumCopyright = album?.Runtime {
-           movieRunningLabel.text = "Running Time : \(albumCopyright)"
+           movieRunningLabel.text = "Play Time : \(albumCopyright)"
        }
         
        if let albumReleaseDate = album?.imdbRating {
@@ -235,7 +243,7 @@ extension MovieDetailsViewController{
         
         if let albumGenre = album?.Plot {
             
-            movieSynopisiLabel.text = "Synopsis : \(albumGenre)"
+            movieSynopisiLabel.text = "Synopsis : \n\(albumGenre)"
         }
        
        if let imageUrl = albumDetails?.Poster {
@@ -263,11 +271,14 @@ extension MovieDetailsViewController{
        ])
        
        view.addSubview(scrollView)
+       stackview.addArrangedSubview(movieRunningLabel)
+       stackview.addArrangedSubview(movieratingLabel)
        scrollView.addSubview(scrollViewContainer)
        scrollViewContainer.addArrangedSubview(movieNameLabel)
        scrollViewContainer.addArrangedSubview(movieYearLabel)
-       scrollViewContainer.addArrangedSubview(movieRunningLabel)
-       scrollViewContainer.addArrangedSubview(movieratingLabel)
+       scrollViewContainer.addArrangedSubview(stackview)
+       //scrollViewContainer.addArrangedSubview(movieRunningLabel)
+       //scrollViewContainer.addArrangedSubview(movieratingLabel)
        scrollViewContainer.addArrangedSubview(movieSynopisiLabel)
         scrollViewContainer.addArrangedSubview(movieDirectorLabel)
         scrollViewContainer.addArrangedSubview(movieWriterLabel)
@@ -287,7 +298,8 @@ extension MovieDetailsViewController{
            scrollViewContainer.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
            scrollViewContainer.topAnchor.constraint(equalTo: scrollView.topAnchor),
            scrollViewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-           scrollViewContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+           scrollViewContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+        
            
        ])
     }
